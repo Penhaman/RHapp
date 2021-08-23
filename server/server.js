@@ -2,18 +2,24 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 /*const routes =  require('./src/routes');*/
 
 const app = express();
 const connection = mysql.createConnection({
     host: 'localhost',
+    port: '3306',
     user: 'user',
-    password: 'password'
+    password: 'password',
+    database: 'RHApp'
+    
 });
-connection.connect(function(e){
-    if(e) throw e;
-    console.log('Connected!')
-})
-  
+connection.connect(function(err){
+    if(err){
+      console.log('Error connecting to Db');
+      return;
+    }
+    console.log('Connection established');
+  });
+
 const port = process.env.PORT || 5000;
