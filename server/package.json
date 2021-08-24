@@ -4,6 +4,9 @@
   "description": "server side RH app",
   "main": "index.js",
   "scripts": {
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joao Pereira",
@@ -16,5 +19,9 @@
     "path": "^0.12.7",
     "routes": "^2.1.0",
     "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
   }
 }
